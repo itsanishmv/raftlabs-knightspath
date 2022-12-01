@@ -1,5 +1,5 @@
 export default function findPath(input) {
-  const s = "ABCDEFGH";
+  const alphabets = "ABCDEFGH";
   const [x, y] = input;
   const axis = [
     [1, 2],
@@ -13,7 +13,7 @@ export default function findPath(input) {
   ];
   return axis
     .map(([a, b]) => {
-      return `${s[s.indexOf(x) + a]}${+y + b}`;
+      return `${alphabets[alphabets.indexOf(x) + a]}${+y + b}`;
     })
     .filter((value) => {
       return /^[a-h][1-8]$/i.test(value);

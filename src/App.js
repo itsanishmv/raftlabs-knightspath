@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-
 import "./App.css";
 import Tile from "./components/Tile";
 import findPath from "./findPath";
 
 function App({}) {
-  const [chess, setChess] = useState([]);
   const [knightPosition, setKnightPosititon] = useState("");
   const [destinationTile, setDestinationTile] = useState();
   const y = ["1", "2", "3", "4", "5", "6", "7", "8"];
   const x = ["A", "B", "C", "D", "E", "F", "G", "H"];
-  let arr = [];
+
   useEffect(() => {
     setDestinationTile(findPath(knightPosition));
   }, [knightPosition]);
@@ -18,11 +16,11 @@ function App({}) {
   function handlechildToParent(pos) {
     setKnightPosititon(pos);
   }
-
+  let arr = [];
   for (let i = y.length - 1; i >= 0; i--) {
     for (let j = 0; j < x.length; j++) {
-      const tileColor = (i + j) % 2 == 0;
-      const color = tileColor ? "black" : "white";
+      const even = (i + j) % 2 == 0;
+      const color = even ? "black" : "white";
       arr.push({ tileColor: color, coordinates: x[j] + y[i] });
     }
   }
@@ -30,24 +28,21 @@ function App({}) {
   return (
     <div className="App">
       <h1>Chessboard</h1>
+      <h5>
+        (please click on the box to see the possible paths where a knight can
+        move )
+      </h5>
       <div className="chessboard">
-        {arr.map((el) =>
-          destinationTile?.includes(el.coordinates) ? (
-            <Tile
-              tileColor={"blue"}
-              coordinates={el.coordinates}
-              handleChildToParent={handlechildToParent}
-              knightPosition={knightPosition}
-            />
-          ) : (
-            <Tile
-              tileColor={el.tileColor}
-              coordinates={el.coordinates}
-              handleChildToParent={handlechildToParent}
-              knightPosition={knightPosition}
-            />
-          )
-        )}
+        {arr.map((el) => (
+          <Tile
+            tileColor={
+              destinationTile?.includes(el.coordinates) ? "green" : el.tileColor
+            }
+            coordinates={el.coordinates}
+            handleChildToParent={handlechildToParent}
+            knightPosition={knightPosition}
+          />
+        ))}
       </div>
     </div>
   );

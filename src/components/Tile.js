@@ -1,32 +1,34 @@
 import React from "react";
 
-import KNIGHT from "./knightIMG.png";
-
 function Tile({ tileColor, coordinates, handleChildToParent, knightPosition }) {
   return (
-    <div
+    <button
       onClick={(e) => handleChildToParent(e.target.getAttribute("value"))}
       value={coordinates}
+      disabled={knightPosition == coordinates}
       style={{
+        border: "none",
         backgroundColor: tileColor,
         height: "62.5px",
         width: "62.5px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        cursor: "pointer",
       }}
     >
       <img
         style={{
           display: knightPosition == coordinates ? "block" : "none",
-          height: "20px",
-          width: "20px",
+          height: "25px",
+          width: "25px",
+          cursor: "none",
         }}
-        src={KNIGHT}
+        src={"knightIMG.png"}
         alt="horse"
       />
-      {coordinates}
-    </div>
+      {knightPosition == coordinates ? "" : coordinates}
+    </button>
   );
 }
 
