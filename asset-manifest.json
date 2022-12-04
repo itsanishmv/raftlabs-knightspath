@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/raftlabs-knightspath/static/css/main.70fbb115.css",
+    "main.js": "/raftlabs-knightspath/static/js/main.5b429759.js",
+    "index.html": "/raftlabs-knightspath/index.html",
+    "main.70fbb115.css.map": "/raftlabs-knightspath/static/css/main.70fbb115.css.map",
+    "main.5b429759.js.map": "/raftlabs-knightspath/static/js/main.5b429759.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.70fbb115.css",
+    "static/js/main.5b429759.js"
+  ]
+}
